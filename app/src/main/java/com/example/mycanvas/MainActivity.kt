@@ -151,7 +151,7 @@ fun Undo() {
 fun Redo() {
     Button(onClick = {
         if (State.redoStrokes.isNotEmpty()) {
-            var id = State.redoStrokes.first().strokeID
+            var id = State.redoStrokes.last().strokeID
             do {
                 State.strokes.add(State.redoStrokes.removeLast())
             } while (State.redoStrokes.isNotEmpty() && State.redoStrokes.last().strokeID == id)
