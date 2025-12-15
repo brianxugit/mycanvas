@@ -83,8 +83,11 @@ fun App() {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ){
-                    Undo()
-                    Redo()
+                    Row() {
+                        Undo()
+                        Redo()
+                    }
+                    Clear()
                 }
                 MyCanvas()
             }
@@ -131,6 +134,16 @@ fun SizeSlider(onSelected: (Float) -> Unit) {
                         onSelected(it)},
         valueRange = 1f..32.5f
     )
+}
+
+@Composable
+fun Clear() {
+    Button(onClick = {
+        State.strokes.clear()
+        State.redoStrokes.clear()
+    } ) {
+        Text("Clear")
+    }
 }
 
 @Composable
